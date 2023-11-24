@@ -7,7 +7,14 @@ import {
   Quadro,
   Ferramentas,
   Titulo_ferramentas,
+  Teste1,
+  CabecalhoFerramenta1,
+  Botao1,
+  Botao2,
+  Explicacao,
+  Botoes,
 } from "./Styles";
+import { Lixeira } from "../../assets/index";
 
 export default function Favorites() {
   return (
@@ -30,6 +37,14 @@ export default function Favorites() {
       </Quadro>
       <Ferramentas>
         <Titulo_ferramentas>FERRAMENTAS CRIADAS </Titulo_ferramentas>
+        <CabecalhoFerramenta1>
+          <Teste1> Teste da ferramenta 1</Teste1>
+          <Botoes>
+            <Botao1></Botao1>
+            <Botao2></Botao2>
+          </Botoes>
+        </CabecalhoFerramenta1>
+        <Explicacao>Aqui vai ficar a descrição curta da ferramenta</Explicacao>
       </Ferramentas>
     </Container>
   );
