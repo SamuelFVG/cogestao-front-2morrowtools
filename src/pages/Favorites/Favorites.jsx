@@ -1,35 +1,36 @@
 import {
   Container,
   Titulo,
-  Nome,
-  Upload,
-  Descricao,
-  Input_nome,
-  Input_upload,
-  Input_descricao,
+  Label,
+  Input,
   Salvar,
   Quadro,
+  Ferramentas,
+  Titulo_ferramentas,
 } from "./Styles";
 
 export default function Favorites() {
   return (
     <Container>
+      <Titulo>CRIAR NOVA FERRAMENTA</Titulo>
       <Quadro>
-        <Titulo>CRIAR NOVA FERRAMENTA</Titulo>
-        <Nome>
+        <Label>
           Nome
-          <Input_nome placeholder='GPT'></Input_nome>
-        </Nome>
-        <Upload>
+          <Input placeholder='GPT'></Input>
+        </Label>
+        <Label>
           Upload de Imagem
-          <Input_upload placeholder='http//google'></Input_upload>
-        </Upload>
-        <Descricao>
+          <Input placeholder='http//google'></Input>
+        </Label>
+        <Label>
           Descrição curta
-          <Input_descricao placeholder='Escreva aqui a sua descrição'></Input_descricao>
-        </Descricao>
-        <Salvar>Salvar</Salvar>
+          <Input placeholder='Escreva aqui a sua descrição'></Input>
+        </Label>
+        <Salvar>SALVAR</Salvar>
       </Quadro>
+      <Ferramentas>
+        <Titulo_ferramentas>FERRAMENTAS CRIADAS </Titulo_ferramentas>
+      </Ferramentas>
     </Container>
   );
 }
