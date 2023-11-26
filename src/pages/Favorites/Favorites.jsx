@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Container, DivNovaFerramenta, DivFormulario, Formulario, LabelFormulario, InputFormulario, BotaoFormulario, DivBotao} from "./Styles";
+import { Container, DivNovaFerramenta, DivFormulario, Formulario, LabelFormulario,
+   InputFormulario, BotaoFormulario, DivBotao, DivFerramentasCriadas} from "./Styles";
+import { Card } from "../../components";
 
 export default function Favorites() {
 const [Nome, setNome] = useState('');
@@ -34,7 +36,8 @@ const handleSubmit = async (e) => {
 
       </DivFormulario>
 
-      
+      <DivFerramentasCriadas>FERRAMENTAS CRIADAS</DivFerramentasCriadas>
+      <Card></Card>
     </Container>
   )
 

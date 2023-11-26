@@ -73,3 +73,15 @@ font-size: 24px;
 font-weight: 400;
 line-height: normal;
 `
+export const DivFerramentasCriadas = styled.div`
+margin-top: 7%;
+ display: flex;
+ flex-direction: column;
+ width: 100%;
+ color: #fff;
+ font-size: 50px;
+ font-style: normal;
+ font-weight: 600;
+ line-height: normal;
+ text-align: center;
+`
