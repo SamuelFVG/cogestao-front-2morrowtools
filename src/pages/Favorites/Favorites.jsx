@@ -13,8 +13,14 @@ import {
   Botao2,
   Explicacao,
   Botoes,
+  Imagem_ferramenta1,
+  Alinhamento,
 } from "./Styles";
-import { Lixeira } from "../../assets/index";
+import { GPT } from "../../assets/index";
+import { AI } from "../../assets/index";
+import { Gato } from "../../assets/index";
+import { Tools } from "../../components/index";
+import { Modal } from "../../components/index";
 
 export default function Favorites() {
   return (
@@ -35,17 +41,7 @@ export default function Favorites() {
         </Label>
         <Salvar>SALVAR</Salvar>
       </Quadro>
-      <Ferramentas>
-        <Titulo_ferramentas>FERRAMENTAS CRIADAS </Titulo_ferramentas>
-        <CabecalhoFerramenta1>
-          <Teste1> Teste da ferramenta 1</Teste1>
-          <Botoes>
-            <Botao1></Botao1>
-            <Botao2></Botao2>
-          </Botoes>
-        </CabecalhoFerramenta1>
-        <Explicacao>Aqui vai ficar a descrição curta da ferramenta</Explicacao>
-      </Ferramentas>
+      <Tools />
     </Container>
   );
 }
