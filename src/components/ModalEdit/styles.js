@@ -1,22 +1,22 @@
-import { Modal } from "antd";
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const DivGeral = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 150px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  height: 600px;
+  width: 550px;
 `;
 
-export const DivNovaFerramenta = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+export const DivTitulo = styled.div`
   color: #fff;
-  font-size: 50px;
+  text-align: center;
+  font-size: 32px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  padding-left: 4%;
 `;
 
 export const DivFormulario = styled.div`
@@ -28,6 +28,17 @@ export const DivFormulario = styled.div`
   padding-top: 2%;
 `;
 export const Formulario = styled.form``;
+export const LabelFormularioNome = styled.label`
+  color: #fff;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: left;
+  display: block;
+  margin-top: 0px;
+`;
+
 export const LabelFormulario = styled.label`
   color: #fff;
   font-size: 22px;
@@ -36,7 +47,7 @@ export const LabelFormulario = styled.label`
   line-height: normal;
   text-align: left;
   display: block;
-  margin-top: 2%;
+  margin-top: 30px;
 `;
 export const InputFormulario = styled.input`
   width: 100%;
@@ -55,7 +66,7 @@ export const InputFormulario = styled.input`
 
 export const DivBotao = styled.div`
   display: flex;
-  padding-top: 5%;
+  padding-top: 50px;
   align-items: center;
   justify-content: center;
 `;
@@ -76,27 +87,4 @@ export const BotaoFormulario = styled.button`
   &:hover {
     cursor: pointer;
   }
-`;
-export const DivFerramentasCriadas = styled.div`
-  margin-top: 7%;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  color: #fff;
-  font-size: 50px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  text-align: center;
-`;
-
-export const ModalStyle = styled(Modal)`
-  .ant-modal-content {
-    background-color: red !important;
-  }
-`;
-
-export const DivDoCard = styled.div`
-  display: flex;
-  justify-content: center;
 `;
