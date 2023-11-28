@@ -14,7 +14,7 @@ export const DivTexto = styled.div`
   flex-direction: column;
   margin-top: 150px;
   margin-left: 3%;
-  font-size: 30px;
+  font-size: 50px;
 `;
 
 export const Nome = styled.div`
@@ -95,6 +95,7 @@ export const DivBotaoSalvar = styled.div`
 
 export const BotaoSalvar = styled.div`
   display: flex;
+  align-items: center;
   justify-content: center;
   width: 208px;
   height: 56.114px;
@@ -109,6 +110,54 @@ export const BotaoSalvar = styled.div`
   text-transform: uppercase;
 `;
 
-export const Cards = styled.div``;
+export const Ferramentas = styled.div`
+  display: flex;
+  margin-top: 120px;
+  justify-content: center;
+  font-family: Exo 2;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+`;
 
-export const Ferramentas = styled.div``;
+export const Cards = styled.div`
+  display: flex;
+  margin-top: 50px;
+  justify-content: center;
+  width: 50%;
+  flex-direction: column;
+  margin-left: 25%;
+`;
+
+export const HeaderCard = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const Titulo = styled.div`
+  display: flex;
+  font-family: Exo 2;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+`;
+
+export const Buttons = styled.div``;
+
+export const DescricaoCard = styled.div`
+  display: flex;
+  margin-top: 20px;
+  color: #828282;
+  font-family: Exo 2;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+`;
+
+export const ImagemCard = styled.div`
+  display: flex;
+  margin-top: 20px;
+`;
