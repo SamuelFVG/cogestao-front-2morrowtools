@@ -34,6 +34,11 @@ export default function Favorites() {
       descrição: "Ferramenta de pesquisa com integração de um LLM",
       Url: "https://picsum.photos/id/237/536/354",
     },
+    {
+      nome: "Notion Ai",
+      descrição: "Unir funcionalidades em um só local",
+      Url: "https://picsum.photos/id/237/536/354",
+    },
   ];
 
   return (
@@ -55,12 +60,12 @@ export default function Favorites() {
       </InfoFerramentas>
 
       <DivBotaoSalvar>
-        <BotaoSalvar>Salvar</BotaoSalvar>
+        <BotaoSalvar onClick={() => alert("Nova ferramenta criada!")}>Salvar</BotaoSalvar>
       </DivBotaoSalvar>
       <Ferramentas>FERRAMENTAS CRIADAS</Ferramentas>
       {seções.map(function (seção) {
         return (
-          <Cards>
+          <Cards key={seção.nome}>
             <HeaderCard>
               <Titulo>{seção.nome}</Titulo>
               <Buttons>

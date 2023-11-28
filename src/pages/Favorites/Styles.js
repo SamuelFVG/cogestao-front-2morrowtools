@@ -144,7 +144,10 @@ export const Titulo = styled.div`
   line-height: normal;
 `;
 
-export const Buttons = styled.div``;
+export const Buttons = styled.div`
+  display: flex;
+  cursor: pointer;
+`;
 
 export const DescricaoCard = styled.div`
   display: flex;
