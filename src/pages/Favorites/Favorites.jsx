@@ -13,6 +13,8 @@ import {
   EscrevaDescricao,
   DivBotaoSalvar,
   BotaoSalvar,
+  Cards,
+  Ferramentas,
 } from "./Styles";
 
 export default function Favorites() {
@@ -48,6 +50,9 @@ export default function Favorites() {
       <DivBotaoSalvar>
         <BotaoSalvar>Salvar</BotaoSalvar>
       </DivBotaoSalvar>
+      <Cards>
+        <Ferramentas></Ferramentas>
+      </Cards>
     </Container>
   );
 }

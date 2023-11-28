@@ -108,3 +108,7 @@ export const BotaoSalvar = styled.div`
   line-height: normal;
   text-transform: uppercase;
 `;
+
+export const Cards = styled.div``;
+
+export const Ferramentas = styled.div``;
