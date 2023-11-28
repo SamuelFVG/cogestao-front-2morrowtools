@@ -15,6 +15,9 @@ export const DivTexto = styled.div`
   margin-top: 150px;
   margin-left: 3%;
   font-size: 50px;
+  @media (max-width: 400px) {
+    font-size: 30px;
+  }
 `;
 
 export const Nome = styled.div`
@@ -119,6 +122,9 @@ export const Ferramentas = styled.div`
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  @media (max-width: 400px) {
+    font-size: 30px;
+  }
 `;
 
 export const Cards = styled.div`
@@ -128,6 +134,9 @@ export const Cards = styled.div`
   width: 50%;
   flex-direction: column;
   margin-left: 25%;
+  @media (max-width: 700px) {
+    width: 30%;
+  }
 `;
 
 export const HeaderCard = styled.div`
