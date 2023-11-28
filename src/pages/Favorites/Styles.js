@@ -108,19 +108,3 @@ export const BotaoSalvar = styled.div`
   line-height: normal;
   text-transform: uppercase;
 `;
-
-/*text-align: center;
-  display: flex;
-
-  font-family: Exo 2;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  text-transform: uppercase;
-  width: 208px;
-  height: 56.114px;
-  flex-shrink: 0;
-  border-radius: 6px;
-  background: #013c9d;
-  cursor: pointer;*/
