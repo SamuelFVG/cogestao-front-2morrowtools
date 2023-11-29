@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 120px;
+  margin-top: 7%;
   margin-left: 10%;
   color: #fff;
   font-family: Exo 2;
@@ -21,8 +21,8 @@ export const ContainerCreate = styled.div`
   line-height: normal;
 `;
 export const InputCreate = styled.input`
-  width: 1243.782px;
-  height: 64.138px;
+  width: 100%;
+  height: 8vh;
   flex-shrink: 0;
   border-radius: 6px;
   border: 2px solid #fff;
@@ -35,8 +35,8 @@ export const InputCreate = styled.input`
   line-height: normal;
 `;
 export const SaveButton = styled.button`
-  width: 208px;
-  height: 56.114px;
+  width: 30vh;
+  height: 8vh;
   flex-shrink: 0;
   border-radius: 15px;
   background: #013c9d;
@@ -54,7 +54,7 @@ export const SaveButton = styled.button`
 export const Line = styled.div`
   width: 100%;
   height: 3vh;
-  margin-top: 50px;
+  margin-top: 5%;
   text-align: center;
   padding-right: 10%;
 `;

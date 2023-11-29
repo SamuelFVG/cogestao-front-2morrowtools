@@ -45,7 +45,7 @@ export const ModalInterior = styled.div`
 export const BotaoConfirma = styled.button`
   width: 155px;
   height: 40px;
-  margin-top: 0px;
+  margin-top: 10px;
   border-radius: 10px;
   border: solid black;
   color: #fff;
@@ -62,7 +62,6 @@ export const Line = styled.div`
   width: 100%;
   height: 3vh;
   margin-top: 30px;
-  text-align: center;
   color: #fff;
   text-align: center;
   font-family: Exo 2;

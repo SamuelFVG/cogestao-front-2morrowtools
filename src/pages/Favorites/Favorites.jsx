@@ -1,7 +1,19 @@
 import { Container, ContainerCreate, InputCreate, SaveButton, Line } from "./Styles";
-import { ModalGrande } from "../../components";
+import { CardFerramenta, ModalGrande } from "../../components";
 import React, { useState } from "react";
 export default function Favorites() {
+  const tools = [
+    {
+      name: "ChatGPT",
+      description: "LLM da OpenAI",
+      imageUrl: "https://picsum.photos/id/237/536/354",
+    },
+    {
+      name: "Perplexity Ai",
+      description: "Ferramenta de pesquisa com integração de um LLM",
+      imageUrl: "https://picsum.photos/id/237/536/354",
+    },
+  ];
   const [openModal, setOpenModal] = useState(false);
 
   const handleSaveButtonClick = () => {
@@ -19,8 +31,13 @@ export default function Favorites() {
         <InputCreate placeholder='escreva aqui sua descrição'></InputCreate>
         <SaveButton onClick={() => handleSaveButtonClick(true)}>Salvar</SaveButton>
       </ContainerCreate>
-      <ModalGrande isOpen={openModal} setModalOpen={() => setOpenModal(false)}></ModalGrande>
+      <ModalGrande isOpen={openModal} setModalOpen={() => setOpenModal(false)}>
+        <p>ola</p>
+      </ModalGrande>
       <Line>FERRAMENTAS CRIADAS</Line>
+      {tools.map((tool, index) => (
+        <CardFerramenta key={index} tool={tool} />
+      ))}
     </Container>
   );
 }
