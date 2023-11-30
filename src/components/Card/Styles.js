@@ -17,7 +17,12 @@ export const Title = styled.div`
   font-weight: 600;
   line-height: normal;
   margin-bottom: 5px;
+  > svg {
+    cursor: pointer;
+    padding-left: 5px;
+  }
 `;
+export const Svgs = styled.div``;
 export const Description = styled.div`
   color: #828282;
   font-family: Exo 2;
@@ -31,4 +36,11 @@ export const Image = styled.img`
   width: 100%;
   height: 60vh;
   background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+`;
+export const InputEdit = styled.input`
+  height: 30px;
+  width: 80%;
+  border-radius: 6px;
+  border: 2px solid #fff;
+  margin-top: 10px;
 `;

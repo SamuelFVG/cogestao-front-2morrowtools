@@ -22,22 +22,23 @@ export const ModalInterior = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
-  height: 450px;
+  width: 400px;
+  height: 250px;
   border-radius: 40px;
   background: #1f1f1f;
-  color: #fff;
+  color: #b4b4b4;
+  text-align: center;
   font-family: Roboto;
-  font-size: 22px;
+  font-size: 24px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  padding-left: 50px;
+  padding: 10px;
 
   > svg {
     cursor: pointer;
     position: fixed;
-    margin-left: 80%;
+    margin-left: 40%;
     margin-top: 5px;
     color: #444444;
   }
@@ -56,7 +57,6 @@ export const BotaoConfirma = styled.button`
   line-height: normal;
   line-height: normal;
   background: #013c9d;
-  margin-left: 25%;
 `;
 export const Line = styled.div`
   width: 100%;
