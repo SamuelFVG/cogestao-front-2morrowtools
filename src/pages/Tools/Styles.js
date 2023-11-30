@@ -6,6 +6,12 @@ export const Container = styled.div`
   margin-top: 150px;
 `;
 
+export const StyledTools = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 150px;
+`;
+
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -22,6 +28,10 @@ export const StyledForm = styled.form`
     font-weight:400;
     font-size:50px;
     margin-bottom:0rem;
+    @media (max-width: 768px) {
+      font-size:30px;
+      margin-bottom:1rem;
+    }
   }
 `;
 
@@ -40,6 +50,7 @@ export const StyledInput = styled.input` //Area de texto
 export const StyledButton = styled.button` //Botao de Autenticação
     padding: 1rem;
     font-size: 1rem;
+    text-align:center;
     background-color: #013C9D;
     color: white;
     width:15%;
@@ -49,5 +60,9 @@ export const StyledButton = styled.button` //Botao de Autenticação
 
     &:hover{
       background-color: #2E64BD;                      
+    }
+    
+    @media (max-width: 768px) {
+      min-width:80px;
     }
 `;

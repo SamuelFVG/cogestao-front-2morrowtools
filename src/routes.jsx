@@ -7,7 +7,7 @@ import {
 
 import { AppLayout } from "./layouts";
 
-import { Favorites, Ferramentas } from "./pages";
+import { Favorites, Tools } from "./pages";
 
 function Routes() {
   const router = createBrowserRouter(
@@ -15,7 +15,7 @@ function Routes() {
       <Route>
         <Route path='/' element={<AppLayout />}>
           <Route index element={<Favorites />} />
-          <Route path='ferramentas' element={<Ferramentas />} />
+          <Route path='Tools' element={<Tools />} />
         </Route>
       </Route>
     )
