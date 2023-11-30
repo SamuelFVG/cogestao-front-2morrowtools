@@ -12,6 +12,7 @@ export const colors = {
   grey: {
     cardBackground: "#111720",
     veryLight: "#d9d9d9",
+    formtext: "#B4B4B4",
   },
   white: "#FFF",
   black: "#000",
