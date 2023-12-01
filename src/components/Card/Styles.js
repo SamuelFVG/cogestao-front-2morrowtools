@@ -3,10 +3,18 @@ import styled from "styled-components";
 export const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 10%;
+  margin-bottom: 10%;
   margin-inline:auto;
   width: 40%;
   color:#828282;
+
+  & img {
+    max-width:100%;
+    max-height:300px;
+    @media (max-width: 768px) {
+      max-height:200px;
+    }
+  }
     @media (max-width: 768px) {
       width:60%;
     }

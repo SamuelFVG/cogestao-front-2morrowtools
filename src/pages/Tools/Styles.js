@@ -9,7 +9,13 @@ export const Container = styled.div`
 export const StyledTools = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 150px;
+  margin-top: 60px;
+  & h1{
+  margin-inline:auto;
+  font-weight:400;
+  font-size:50px;
+  margin-bottom:80px;
+  }
 `;
 
 export const StyledForm = styled.form`
@@ -19,7 +25,7 @@ export const StyledForm = styled.form`
   gap: 0.5rem;
   border-radius:5px;
   padding-top: 2.5rem;
-  width:90%;
+  width:80%;
   margin:auto;
   font-size:22px;
   font-weight:400;
@@ -31,6 +37,7 @@ export const StyledForm = styled.form`
     @media (max-width: 768px) {
       font-size:30px;
       margin-bottom:1rem;
+      width:90%;
     }
   }
 `;
@@ -39,13 +46,13 @@ export const StyledInput = styled.input` //Area de texto
   padding: 0.8rem;
   font-size: 1rem;
   margin:auto;
+  margin-bottom:0.5rem;
   width:100%;
   background-color:#080B10;
   border-radius:6px;
   border-color:white;
   color:#B4B4B4;
 `;
-
 
 export const StyledButton = styled.button` //Botao de Autenticação
     padding: 1rem;
