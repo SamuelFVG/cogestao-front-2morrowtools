@@ -12,7 +12,7 @@ export const Container = styled.div`
   font-weight: 600;
   line-height: normal;
 `;
-export const ContainerCreate = styled.div`
+export const ContainerForm = styled.form`
   color: #fff;
   font-family: Roboto;
   font-size: 22px;
@@ -41,7 +41,7 @@ export const SaveButton = styled.button`
   border-radius: 15px;
   background: #013c9d;
   margin-left: 38%;
-  margin-top: 60px;
+  margin-top: 0px;
   color: #fff;
   text-align: center;
   font-family: Exo 2;
@@ -57,4 +57,11 @@ export const Line = styled.div`
   margin-top: 5%;
   text-align: center;
   padding-right: 10%;
+`;
+export const Label = styled.label`
+  width: 100px;
+  margin-top: 30px;
+`;
+export const SeguraInput = styled.div`
+  height: 120px;
 `;

@@ -1,36 +1,86 @@
-import { Container, ContainerCreate, InputCreate, SaveButton, Line } from "./Styles";
+import {
+  Container,
+  ContainerForm,
+  InputCreate,
+  SaveButton,
+  Line,
+  Label,
+  SeguraInput,
+} from "./Styles";
 import { CardFerramenta, ModalGrande } from "../../components";
+import { useState } from "react";
+import api from "../../services/api";
 
 export default function Favorites() {
-  const tools = [
-    {
-      name: "ChatGPT",
-      description: "LLM da OpenAI",
-      imageUrl: "https://picsum.photos/id/237/536/354",
-    },
-    {
-      name: "Perplexity Ai",
-      description: "Ferramenta de pesquisa com integração de um LLM",
-      imageUrl: "https://picsum.photos/id/237/536/354",
-    },
-  ];
+  const [nome, setNome] = useState("");
+  const [description, setDescription] = useState("");
+  const [ImageUrl, setImageUrl] = useState("");
+  const [ToolData, setToolData] = useState([]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(nome, description, ImageUrl);
+    try {
+      const res = await api.post("/tool", { nome, description, ImageUrl });
+      console.log(res.data);
+    } catch (erro) {
+      alert(erro.message);
+    }
+  };
+  // const tools = [
+  //   {
+  //     name: "ChatGPT",
+  //     description: "LLM da OpenAI",
+  //     imageUrl: "https://picsum.photos/id/237/536/354",
+  //   },
+  //   {
+  //     name: "Perplexity Ai",
+  //     description: "Ferramenta de pesquisa com integração de um LLM",
+  //     imageUrl: "https://picsum.photos/id/237/536/354",
+  //   },
+  // ];
 
   return (
     <Container>
       CRIAR NOVA FERRAMENTA
-      <ContainerCreate>
-        <p>Nome</p>
-        <InputCreate placeholder='Gpt'></InputCreate>
-        <p>Upload de Imagem</p>
-        <InputCreate placeholder='http//google'></InputCreate>
-        <p>Descrição Curta</p>
-        <InputCreate placeholder='escreva aqui sua descrição'></InputCreate>
-        <SaveButton>Salvar</SaveButton>
-      </ContainerCreate>
+      <ContainerForm onSubmit={handleSubmit}>
+        <SeguraInput>
+          <Label htmlFor='nome'>nome</Label>
+          <InputCreate
+            placeholder='Gpt'
+            id='nome'
+            required
+            onChange={(e) => setNome(e.target.value)}
+          ></InputCreate>
+        </SeguraInput>
+        <SeguraInput>
+          <Label htmlFor='ImageUrl'>Upload de Imagem</Label>
+          <InputCreate
+            placeholder='http//google'
+            id='ImageUrl'
+            required
+            onChange={(e) => setImageUrl(e.target.value)}
+          ></InputCreate>
+        </SeguraInput>
+        <SeguraInput>
+          <Label htmlFor='description'>Descriçao curta</Label>
+          <InputCreate
+            placeholder='pequena descrição'
+            id='description'
+            required
+            onChange={(e) => setDescription(e.target.value)}
+          ></InputCreate>
+        </SeguraInput>
+        <SaveButton type='submit'>Salvar</SaveButton>
+      </ContainerForm>
       <Line>FERRAMENTAS CRIADAS</Line>
-      {tools.map((tool, index) => (
-        <CardFerramenta key={index} tool={tool} />
+      {ToolData.map((ToolData, index) => (
+        <CardFerramenta key={index} ToolData={ToolData} />
       ))}
     </Container>
   );
 }
+
+//       {tools.map((tool, index) => (
+//  <CardFerramenta key={index} tool={tool} />
+// ))}

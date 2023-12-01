@@ -2,8 +2,9 @@ import { createGlobalStyle } from "styled-components";
 import { colors, fonts } from "./styleVariables";
 
 export const GlobalStyles = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
   html, body {
-    font-family: ${fonts.Exo2};
+    font-family: ${fonts.Exo2}, Roboto;
     font-size: 15px;
     background-color: ${colors.blue.background};
     color: ${colors.white};
