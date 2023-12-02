@@ -16,30 +16,44 @@ import {
   Imagem_ferramenta1,
   Alinhamento,
 } from "./Styles";
-import { GPT } from "../../assets/index";
-import { AI } from "../../assets/index";
-import { Gato } from "../../assets/index";
 import { Tools } from "../../components/index";
-import { Modal } from "../../components/index";
+import { useState } from "react";
+import { usePostTool } from "../../services/ManagerService";
 
 export default function Favorites() {
+  const [name, setAiName] = useState();
+  const [imageUrl, setUrlLink] = useState();
+  const [description, setDescription] = useState();
+
+  async function handleSubmit() {
+    const result = usePostTool({ name, imageUrl, description });
+  }
+
   return (
     <Container>
       <Titulo>CRIAR NOVA FERRAMENTA</Titulo>
       <Quadro>
-        <Label>
+        <Label htmlFor='nome'>
           Nome
-          <Input placeholder='GPT'></Input>
+          <Input onChange={(e) => setAiName(e.target.value)} placeholder='GPT' required></Input>
         </Label>
-        <Label>
+        <Label htmlFor='url'>
           Upload de Imagem
-          <Input placeholder='http//google'></Input>
+          <Input
+            onChange={(e) => setUrlLink(e.target.value)}
+            placeholder='http//google'
+            required
+          ></Input>
         </Label>
-        <Label>
+        <Label htmlFor='descricao'>
           Descrição curta
-          <Input placeholder='Escreva aqui a sua descrição'></Input>
+          <Input
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder='Escreva aqui a sua descrição'
+            required
+          ></Input>
         </Label>
-        <Salvar>SALVAR</Salvar>
+        <Salvar onClick={() => handleSubmit()}>SALVAR</Salvar>
       </Quadro>
       <Tools />
     </Container>
