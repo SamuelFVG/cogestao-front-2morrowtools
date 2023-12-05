@@ -1,8 +1,8 @@
-import { Container, ContainerMenu, ToolsButton } from "./Styles";
+import { Container, ContainerMenu } from "./Styles";
 import logo from "../../assets/logo.svg";
 import { useNavigate } from "react-router-dom";
 
-export default function Header() {
+export default function Footer() {
   const navigate = useNavigate();
 
   return (
@@ -10,7 +10,7 @@ export default function Header() {
       <ContainerMenu>
         <img onClick={() => navigate("/")} src={logo} />
       </ContainerMenu>
-      <ToolsButton>Ferramentas</ToolsButton>
+
     </Container>
   );
 }
