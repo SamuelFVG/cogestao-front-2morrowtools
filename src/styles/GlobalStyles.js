@@ -7,7 +7,7 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 15px;
     background-color: ${colors.blue.background};
     color: ${colors.white};
-
+  
     padding: 0;
     margin: 0;
 
@@ -37,5 +37,9 @@ export const GlobalStyles = createGlobalStyle`
 
   * {
     box-sizing: border-box;
+  }
+  
+  body {
+    padding-top: 85px; 
   }
 `;
