@@ -1,35 +1,41 @@
 import { useState } from "react";
-import { Container, Input, Button, Form } from "./Styles";
+import { Container, Input, Button, Form, Body } from "./Styles";
 
 export default function Favorites() {
-  const [errors, setErrors] = useState([]);
-  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
+  const [values, setValues] = useState({ name: "", imageUrl: "" });
 
   function onChange(e) {
-    setValues({ ...values, [e.target.name]: e.target.value });
-
-    for (let key in values) {
-      if (!values[key]) setErrors({ ...errors, [key]: true });
-      else setErrors({ ...errors, [key]: false });
-    }
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
   }
-  console.log(values);
-  console.log(errors);
+
+  function onSubmit() {
+    const errors = {};
+    for (let name in values) {
+      errors[name] = !values[name];
+    }
+    setErrors(errors);
+
+    if (errors.name || errors.imageUrl) console.log("Preencha todos os campos");
+    else console.log("Form submitted:", values);
+  }
+
   return (
-    <Container>
+    <Body>
       <Form>
-        <div>
+        <Container error={errors.name}>
           <label>Nome</label>
           <Input placeholder='Digite o nome' name='name' onChange={onChange} />
-        </div>
-
-        <div>
+          <span>Digite o nome</span>
+        </Container>
+        <Container error={errors.imageUrl}>
           <label>Url de imagem</label>
           <Input placeholder='Digite URL' name='imageUrl' onChange={onChange} />
-        </div>
-
-        <Button>Enviar</Button>
+          <span>Digite a url</span>
+        </Container>
+        <Button onClick={onSubmit}>Enviar</Button>
       </Form>
-    </Container>
+    </Body>
   );
 }

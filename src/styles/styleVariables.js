@@ -16,6 +16,7 @@ export const colors = {
   black: "#000",
   transparent: "rgba(0, 0, 0, 0)",
   shadow: "rgba(0, 0, 0, 0.25)",
+  red: "#ff3d3d",
 };
 
 export const fonts = {
