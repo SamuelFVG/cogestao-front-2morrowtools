@@ -1,6 +1,6 @@
-import { Container, ContainerMenu, ToolsButton } from "./Styles";
+import { Container, ContainerMenu, ToolsButton, SignUpButoon, Buttons } from "./Styles";
 import logo from "../../assets/logo.svg";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -8,9 +8,12 @@ export default function Header() {
   return (
     <Container>
       <ContainerMenu>
-        <img onClick={() => navigate("/")} src={logo} />
+        <img onClick={() => redirect("/")} src={logo} />
       </ContainerMenu>
-      <ToolsButton>Página das Ferramentas</ToolsButton>
+      <Buttons>
+        <SignUpButoon onClick={() => navigate("/signup")}>Login e Cadastro</SignUpButoon>
+        <ToolsButton onClick={() => navigate("/")}>Página das Ferramentas</ToolsButton>
+      </Buttons>
     </Container>
   );
 }

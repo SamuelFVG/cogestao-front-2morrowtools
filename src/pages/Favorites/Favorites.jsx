@@ -1,21 +1,4 @@
-import {
-  Container,
-  Titulo,
-  Label,
-  Input,
-  Salvar,
-  Quadro,
-  Ferramentas,
-  Titulo_ferramentas,
-  Teste1,
-  CabecalhoFerramenta1,
-  Botao1,
-  Botao2,
-  Explicacao,
-  Botoes,
-  Imagem_ferramenta1,
-  Alinhamento,
-} from "./Styles";
+import { Container, Titulo, Label, Input, Salvar, Quadro } from "./Styles";
 import { Tools } from "../../components/index";
 import { useState } from "react";
 import { usePostTool } from "../../services/ManagerService";
@@ -33,11 +16,11 @@ export default function Favorites() {
     <Container>
       <Titulo>CRIAR NOVA FERRAMENTA</Titulo>
       <Quadro>
-        <Label htmlFor='nome'>
+        <Label>
           Nome
           <Input onChange={(e) => setAiName(e.target.value)} placeholder='GPT' required></Input>
         </Label>
-        <Label htmlFor='url'>
+        <Label>
           Upload de Imagem
           <Input
             onChange={(e) => setUrlLink(e.target.value)}
@@ -45,7 +28,7 @@ export default function Favorites() {
             required
           ></Input>
         </Label>
-        <Label htmlFor='descricao'>
+        <Label>
           Descrição curta
           <Input
             onChange={(e) => setDescription(e.target.value)}

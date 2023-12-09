@@ -8,6 +8,7 @@ import {
 import { AppLayout } from "./layouts";
 
 import { Favorites } from "./pages";
+import { SignUp } from "./pages";
 
 function Routes() {
   const router = createBrowserRouter(
@@ -15,6 +16,7 @@ function Routes() {
       <Route>
         <Route path='/' element={<AppLayout />}>
           <Route index element={<Favorites />} />
+          <Route path='signup' element={<SignUp />} />
         </Route>
       </Route>
     )
