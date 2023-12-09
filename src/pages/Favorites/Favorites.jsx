@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Container, Input, Button, Form, Body } from "./Styles";
+import { UseGetTools } from "../../services/ManegerService";
 
 export default function Favorites() {
   const [errors, setErrors] = useState({});
@@ -20,6 +21,12 @@ export default function Favorites() {
     if (errors.name || errors.imageUrl) console.log("Preencha todos os campos");
     else console.log("Form submitted:", values);
   }
+
+  async function getTools() {
+    const tools = await UseGetTools();
+    console.log(tools);
+  }
+  getTools();
 
   return (
     <Body>
