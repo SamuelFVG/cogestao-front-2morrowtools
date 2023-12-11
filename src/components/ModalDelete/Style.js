@@ -19,7 +19,7 @@ export const ModalInterior = styled.div`
   margin-bottom: 50px;
 `;
 
-export const ModalTitulo = styled.div`
+export const ModalTitle = styled.div`
   text-align: center;
   margin-bottom: 10px;
   margin-top: 70px;
@@ -27,7 +27,7 @@ export const ModalTitulo = styled.div`
   font-family: "Exo 2", sans-serif;
 `;
 
-export const BotaoDelete = styled.button`
+export const ButtonDelete = styled.button`
   background: #013c9d;
   text-align: center;
   font-family: "Exo 2", sans-serif;
@@ -37,7 +37,7 @@ export const BotaoDelete = styled.button`
   margin-left: 194px;
 `;
 
-export const BotaoFechar = styled.button`
+export const ButtonClose = styled.button`
   position: absolute;
   top: 10px;
   right: 10px;

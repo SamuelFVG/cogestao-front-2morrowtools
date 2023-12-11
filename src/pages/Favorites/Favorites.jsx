@@ -1,61 +1,104 @@
 import { useState } from "react";
 import {
   Container,
-  Input,
-  Botao,
-  Texto,
-  TextoTitulo,
-  Ferramenta,
+  Button,
+  Text,
+  TextTitle,
+  Tool,
   DivDesc,
   DivUrlImage,
-  DivNome,
+  DivName,
   EditIcon,
+  Space,
   DeleteIcon,
+  Form,
 } from "./Styles";
 import ModalDelete from "../../components/ModalDelete/ModalDelete";
 import ModalUpdate from "../../components/ModalUpdate/ModalUpdate";
+import RegisterInput from "../../components/RegisterInput/RegisterInput";
+import { useGetTools, useCreateTool } from "../../hooks/tools";
+import { useForm } from "react-hook-form";
 
 export default function Favorites() {
-  const [openModalUpdate, setOpenModalUpdate] = useState(false);
-  const [openModalDelete, setOpenModalDelete] = useState(false);
-
-  const handleDeleteClick = () => {
-    setOpenModalDelete(true);
+  const { handleSubmit, register } = useForm();
+  const onSubmit = (data) => {
+    createTool(data);
+    window.location.reload();
   };
+  const [modalDelete, setModalDelete] = useState(false);
+  const openModalDelete = () => setModalDelete(true);
+  const closeModalDelete = () => setModalDelete(false);
 
-  const handleCloseModalDelete = () => {
-    setOpenModalDelete(false);
-  };
+  const [modalUpdate, setModalUpdate] = useState(false);
+  const openModalUpdate = () => setModalUpdate(true);
+  const closeModalUpdate = () => setModalUpdate(false);
 
-  const handleUpdateClick = () => {
-    setOpenModalUpdate(true);
-  };
+  const { data: tool } = useGetTools({
+    onError: (err) => {
+      console.log(err);
+    },
+  });
 
-  const handleCloseModalUpdate = () => {
-    setOpenModalUpdate(false);
-  };
+  const { mutate: createTool } = useCreateTool({
+    onError: (err) => {
+      console.log(err);
+    },
+  });
 
   return (
     <Container>
-      <TextoTitulo>Criar nova ferramenta</TextoTitulo>
-      <Texto>Nome</Texto>
-      <Input type='text' required id='nome' name='nome' placeholder='Nome' />
-      <Texto>URL da Imagem</Texto>
-      <Input type='text' required id='url' name='url' placeholder='Url da Imagem' />
-      <Texto>Descrição da imagem</Texto>
-      <Input type='text' required id='descricao' name='descricao' placeholder='Descriçãoo' />
-      <Botao>Salvar</Botao>
-      <TextoTitulo>Ferramentas criadas</TextoTitulo>
-      <Ferramenta>
-        <DivNome>
-          Ferramenta 1 <EditIcon onClick={handleUpdateClick} />{" "}
-          <DeleteIcon onClick={handleDeleteClick} />
-        </DivNome>
-        <DivDesc>Descrição ferramenta 1</DivDesc>
-        <DivUrlImage style={{ backgroundImage: `url(https://i.ibb.co/HpXGxwG/1.jpg)` }} />
-      </Ferramenta>
-      <ModalDelete isOpen={openModalDelete} onClose={handleCloseModalDelete} />
-      <ModalUpdate isOpen={openModalUpdate} onClose={handleCloseModalUpdate} />
+      <TextTitle>Criar nova ferramenta</TextTitle>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Text>Nome</Text>
+        <RegisterInput
+          type='text'
+          register={register}
+          required
+          id='name'
+          name='name'
+          placeholder='Nome'
+        />
+        <Text>URL da Imagem</Text>
+        <RegisterInput
+          type='text'
+          register={register}
+          required
+          id='urlImage'
+          name='urlImage'
+          placeholder='Url da Imagem'
+        />
+        <Text>Descrição da imagem</Text>
+        <RegisterInput
+          type='text'
+          register={register}
+          required
+          id='description'
+          name='description'
+          placeholder='Descrição'
+        />
+        <Button type='submit'>Salvar</Button>
+      </Form>
+      <TextTitle>Ferramentas criadas</TextTitle>
+      <Space></Space>
+      <Tool>
+        {tool?.map((tool) => (
+          <div key={tool._id}>
+            <DivName>
+              {tool.name} <EditIcon onClick={openModalUpdate} />{" "}
+              <DeleteIcon
+                onClick={() => {
+                  openModalDelete();
+                  itemIdToDelete(tool._id);
+                }}
+              />
+            </DivName>
+            <DivDesc>{tool.description}</DivDesc>
+            <DivUrlImage style={{ backgroundImage: `url(${tool.urlImage})` }} />
+          </div>
+        ))}
+      </Tool>
+      <ModalDelete isOpen={openModalDelete} onClose={closeModalDelete} />
+      <ModalUpdate isOpen={openModalUpdate} onClose={closeModalUpdate} />
     </Container>
   );
 }

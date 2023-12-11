@@ -1,31 +1,31 @@
 import {
   Modalbackground,
   ModalInput,
-  BotaoUpdate,
-  ModalTitulo,
-  BotaoFechar,
-  ModalTexto,
+  ButtonUpdate,
+  ModalTitle,
+  ButtonClose,
+  ModalText,
 } from "./Style";
 
 export default function ModalUpdate({ isOpen, onClose }) {
   if (isOpen) {
     return (
       <Modalbackground>
-        <ModalTitulo>Editar informações</ModalTitulo>
-        <BotaoFechar onClick={onClose}>X</BotaoFechar>
-        <ModalTexto>Nome</ModalTexto>
-        <ModalInput type='text' required id='nome' name='nome' placeholder='Nome' />
-        <ModalTexto>URL da Imagem</ModalTexto>
+        <ModalTitle>Editar informações</ModalTitle>
+        <ButtonClose onClick={onClose}>X</ButtonClose>
+        <ModalText>Nome</ModalText>
+        <ModalInput type='text' required id='name' name='name' placeholder='Nome' />
+        <ModalText>URL da Imagem</ModalText>
         <ModalInput type='text' required id='url' name='url' placeholder='Url da Imagem' />
-        <ModalTexto>Descrição da imagem</ModalTexto>
+        <ModalText>Descrição da imagem</ModalText>
         <ModalInput
           type='text'
           required
-          id='descricao'
-          name='descricao'
+          id='description'
+          name='description'
           placeholder='Descrição'
         />{" "}
-        <BotaoUpdate>Salvar</BotaoUpdate>
+        <ButtonUpdate>Salvar</ButtonUpdate>
       </Modalbackground>
     );
   }

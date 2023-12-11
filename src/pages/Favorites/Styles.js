@@ -17,12 +17,13 @@ export const DeleteIcon = styled(DeleteOutlined)`
   cursor: pointer;
   font-size: 24px;
 `;
-export const Texto = styled.div`
+export const Text = styled.div`
   margin-left: 100px;
   align-self: flex-start;
+  font-family: "Exo 2", sans-serif;
 `;
 
-export const TextoTitulo = styled.div`
+export const TextTitle = styled.div`
   margin-left: auto;
   margin-right: auto;
   font-size: 40px;
@@ -33,7 +34,7 @@ export const Input = styled.input`
   background: #000;
   font-size: 15px;
   color: #fff;
-  font-family: Roboto;
+  font-family: "Exo 2", sans-serif;
   margin: 5px 0;
   height: 40px;
   width: 80%;
@@ -42,7 +43,7 @@ export const Input = styled.input`
   margin-bottom: 20px;
   border-radius: 6px;
 `;
-export const Ferramenta = styled.div`
+export const Tool = styled.div`
   display: flex;
   width: 800px;
   margin-left: 250px;
@@ -51,8 +52,10 @@ export const Ferramenta = styled.div`
   justify-content: center;
   align-items: center;
   height: 60vh;
+  margin-top: 100px;
+  margin-bottom: 50px;
 `;
-export const DivNome = styled.div`
+export const DivName = styled.div`
   font-size: 20px;
   font-family: "Exo 2", sans-serif;
   color: #fff;
@@ -67,16 +70,24 @@ export const DivDesc = styled.div`
   align-self: flex-start;
 `;
 export const DivUrlImage = styled.div`
-  width: 100%;
-  height: 1000px;
+  width: 700px;
+  height: 200px;
+  margin-bottom: 20px;
 `;
-export const Botao = styled.button`
+export const Button = styled.button`
   height: 30px;
   width: 100px;
   margin-bottom: 100px;
-  margin-left: auto;
+  margin-left: 600px;
   margin-right: auto;
   background: #013c9d;
   color: #fff;
   border-radius: 6px;
 `;
+
+export const Space = styled.div`
+  width: 100%;
+  height: 100px;
+  margin-bottom: 1200px;
+`;
+export const Form = styled.form``;

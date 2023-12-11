@@ -1,16 +1,35 @@
-import { Modalbackground, ModalInterior, BotaoDelete, ModalTitulo, BotaoFechar } from "./Style";
+import { useDeleteTool } from "../../hooks/tools";
+import PropTypes from "prop-types";
+import { Modalbackground, ModalInterior, ButtonDelete, ModalTitle, ButtonClose } from "./Style";
 
-export default function ModalDelete({ isOpen, onClose }) {
+export default function ModalDelete({ isOpen, onClose, itemIdToDelete }) {
   if (isOpen) {
+    const { mutate: deleteTool } = useDeleteTool({
+      onError: (err) => {
+        console.log(err);
+      },
+    });
+
     return (
       <Modalbackground>
-        <BotaoFechar onClick={onClose}>X</BotaoFechar>
+        <ButtonClose onClick={onClose}>X</ButtonClose>
 
-        <ModalTitulo>Excluir ferramenta</ModalTitulo>
+        <ModalTitle>Excluir ferramenta</ModalTitle>
         <ModalInterior>Tem certeza que você deseja excluir essa ferramenta?</ModalInterior>
-        <BotaoDelete> EXCLUIR</BotaoDelete>
+        <ButtonDelete
+          onClick={() => {
+            onClose();
+            deleteTool(itemIdToDelete);
+          }}
+        >
+          {" "}
+          EXCLUIR
+        </ButtonDelete>
       </Modalbackground>
     );
   }
   return null;
 }
+ModalDelete.PropTypes = {
+  itemIdToDelete: PropTypes.string,
+};
