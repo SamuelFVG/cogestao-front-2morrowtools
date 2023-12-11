@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Container,
   Button,
@@ -12,21 +12,27 @@ import {
   Space,
   DeleteIcon,
   Form,
+  ModalStyle,
 } from "./Styles";
 import ModalDelete from "../../components/ModalDelete/ModalDelete";
 import ModalUpdate from "../../components/ModalUpdate/ModalUpdate";
 import RegisterInput from "../../components/RegisterInput/RegisterInput";
 import { useGetTools, useCreateTool } from "../../hooks/tools";
 import { useForm } from "react-hook-form";
-
+import { CloseOutlined } from "@ant-design/icons";
 export default function Favorites() {
+  const modalCloseButton = <CloseOutlined style={{ color: "white" }} />;
+  const [deleteIAID, setDeleteIAID] = useState("");
   const { handleSubmit, register } = useForm();
   const onSubmit = (data) => {
     createTool(data);
     window.location.reload();
   };
   const [modalDelete, setModalDelete] = useState(false);
-  const openModalDelete = () => setModalDelete(true);
+  const openModalDelete = (_id) => {
+    setDeleteIAID(_id);
+    setModalDelete(true);
+  };
   const closeModalDelete = () => setModalDelete(false);
 
   const [modalUpdate, setModalUpdate] = useState(false);
@@ -80,6 +86,7 @@ export default function Favorites() {
       </Form>
       <TextTitle>Ferramentas criadas</TextTitle>
       <Space></Space>
+
       <Tool>
         {tool?.map((tool) => (
           <div key={tool._id}>
@@ -87,8 +94,7 @@ export default function Favorites() {
               {tool.name} <EditIcon onClick={openModalUpdate} />{" "}
               <DeleteIcon
                 onClick={() => {
-                  openModalDelete();
-                  itemIdToDelete(tool._id);
+                  openModalDelete(tool?._id);
                 }}
               />
             </DivName>
@@ -97,8 +103,20 @@ export default function Favorites() {
           </div>
         ))}
       </Tool>
-      <ModalDelete isOpen={openModalDelete} onClose={closeModalDelete} />
-      <ModalUpdate isOpen={openModalUpdate} onClose={closeModalUpdate} />
+      <ModalStyle
+        open={modalDelete}
+        onCancel={closeModalDelete}
+        width={500}
+        height={250}
+        padding={0}
+        footer={null}
+        closeIcon={modalCloseButton}
+        centered
+        destroyOnClose
+      >
+        <ModalDelete idAI={deleteIAID} querofechar={closeModalDelete} />
+      </ModalStyle>
+      {/* <ModalUpdate isOpen={openModalUpdate} onClose={closeModalUpdate} /> */}
     </Container>
   );
 }

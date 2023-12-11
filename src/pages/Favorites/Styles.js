@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons/lib/icons";
+import { Modal } from "antd";
 
 export const Container = styled.div`
   display: flex;
@@ -91,3 +92,15 @@ export const Space = styled.div`
   margin-bottom: 1200px;
 `;
 export const Form = styled.form``;
+export const ModalStyle = styled(Modal)`
+  .ant-modal-content {
+    background-color: black;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 6;
+    margin: 0;
+    border-radius: none;
+  }
+`;
