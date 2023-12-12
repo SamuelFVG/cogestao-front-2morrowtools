@@ -43,6 +43,46 @@ export const ContainerMenu = styled.div`
   align-items: center;
 `;
 
+export const Buttons = styled.div`
+  display: flex;
+  justify-content: left;
+  gap: 30px;
+`;
+
+export const LoginButton = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 12rem;
+  height: 60px;
+  border: 1px solid;
+  border-radius: 3px;
+  color: white;
+  background-color: transparent;
+  font-family: ${fonts.Exo2};
+  font-size: 1.2rem;
+  font-weight: 400;
+  word-wrap: break-word;
+  &:hover {
+    background-color: ${colors.white};
+    color: black;
+    cursor: pointer;
+  }
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 10rem;
+    font-size: 1rem;
+  }
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 10rem;
+    height: 40px;
+    font-size: 1rem;
+  }
+  @media (max-width: ${breakpoints.smallDevice}) {
+    width: 7rem;
+    font-size: 0.8rem;
+  }
+`;
+
 export const ToolsButton = styled.button`
   display: flex;
   justify-content: space-around;
