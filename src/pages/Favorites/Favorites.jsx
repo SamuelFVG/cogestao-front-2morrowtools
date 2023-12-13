@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Container,
   DivNovaFerramenta,
@@ -16,6 +16,11 @@ import { Card } from "../../components";
 import { ModalDelete } from "../../components";
 import { CloseOutlined } from "@ant-design/icons";
 import api from "../../services/api";
+import { useGetFerramentas, useCreateFerramenta } from "../../hooks/query/ferramentas";
+import { QueryClient } from "@tanstack/react-query";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "antd/es/form/Form";
+import { createFerramentaValidationSchema, buildCreateFerramentaErrorMessage } from "./utilis";
 
 export default function Favorites() {
   const modalCloseButton = <CloseOutlined style={{ color: "white" }} />;
@@ -25,15 +30,42 @@ export default function Favorites() {
   const [nome, setNome] = useState("");
   const [link, setLink] = useState("");
   const [descricao, setDescricao] = useState("");
+  const [ferramentas, setFerramentas] = useState([]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const res = await api.post("/ferramentas", {
-      nome: nome,
-      link: link,
-      descricao: descricao,
-    });
+  //ref ModalCreateCategory
+
+  const { mutate: createFerramenta } = useCreateFerramenta({
+    onSucess: () => {
+      QueryClient.invalidateQueries({
+        queryKey: ["ferramentas"],
+      });
+    },
+    onError: (err) => {
+      console.log(err);
+    },
+  });
+
+  let validationSchema = createFerramentaValidationSchema;
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(validationSchema),
+  });
+
+  const onSubmit = (data) => {
+    createFerramenta(data);
   };
+
+  const errorMessage = errors?.name?.message;
+
+  const { data: ferramentas2 } = useGetFerramentas({
+    onError: (err) => {
+      console.log(err);
+    },
+  });
 
   return (
     <Container>
@@ -46,7 +78,8 @@ export default function Favorites() {
             required
             placeholder='GPT'
             id='nome'
-            onChange={(e) => setNome(e.target.value)}
+            error={!!errorMessage}
+            {...register("nome")}
           ></InputFormulario>
 
           <LabelFormulario>Upload de imagem</LabelFormulario>
@@ -55,7 +88,8 @@ export default function Favorites() {
             required
             placeholder='http//google'
             id='imagem'
-            onChange={(e) => setLink(e.target.value)}
+            error={!!errorMessage}
+            {...register("link")}
           ></InputFormulario>
 
           <LabelFormulario>Descrição curta</LabelFormulario>
@@ -64,7 +98,8 @@ export default function Favorites() {
             required
             placeholder='Escreva aqui a sua descrição'
             id='descricao'
-            onChange={(e) => setDescricao(e.target.value)}
+            error={!!errorMessage}
+            {...register("descricao")}
           ></InputFormulario>
           <DivBotao>
             <BotaoFormulario>SALVAR</BotaoFormulario>
@@ -73,24 +108,11 @@ export default function Favorites() {
       </DivFormulario>
 
       <DivFerramentasCriadas>FERRAMENTAS CRIADAS</DivFerramentasCriadas>
-      <DivDoCard>
-        <Card />
-      </DivDoCard>
-
-      <button onClick={openModalDelete}>rian</button>
-      <ModalStyle
-        open={modalDelete}
-        onCancel={closeModalDelete}
-        width={300}
-        height={300}
-        padding={0}
-        footer={null}
-        closeIcon={modalCloseButton}
-        centered
-        destroyOnClose
-      >
-        <ModalDelete close={closeModalDelete} />
-      </ModalStyle>
+      {ferramentas2?.map((IAModel) => (
+        <DivDoCard>
+          <Card IAModel={IAModel} />
+        </DivDoCard>
+      ))}
     </Container>
   );
 }

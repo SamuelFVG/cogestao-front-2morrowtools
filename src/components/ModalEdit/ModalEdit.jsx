@@ -10,20 +10,13 @@ import {
   Formulario,
   LabelFormularioNome,
 } from "./styles";
+import { useGetFerramentas } from "../../hooks/query/ferramentas";
 
 export default function ModalEdit() {
   const [nome, setNome] = useState("");
   const [link, setLink] = useState("");
   const [descricao, setDescricao] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    //const res = await api.put("/ferramentas", {
-    //nome: nome,
-    //link: link,
-    //descricao: descricao,
-    //});
-  };
   return (
     <>
       <DivGeral>

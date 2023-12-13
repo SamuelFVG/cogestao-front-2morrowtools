@@ -16,7 +16,7 @@ import api from "../../services/api";
 import { useState } from "react";
 import { ModalDelete, ModalEdit } from "../../components";
 
-export default function Card() {
+export default function Card({ IAModel }) {
   const modalCloseButton = <CloseOutlined style={{ color: "white" }} />;
   const [modalDelete, setModalDelete] = useState(false);
   const openModalDelete = () => setModalDelete(true);
@@ -29,7 +29,7 @@ export default function Card() {
   return (
     <DivCard>
       <DivNomeIcons>
-        <DivNomeFerramenta>Nome ferramenta</DivNomeFerramenta>
+        <DivNomeFerramenta>{IAModel.nome}</DivNomeFerramenta>
         <DivIconLixo>
           <FaRegTrashAlt onClick={openModalDelete} />
           <ModalStyle
@@ -65,9 +65,9 @@ export default function Card() {
         </DivIconPen>
       </DivNomeIcons>
 
-      <DivDescricao>descricao</DivDescricao>
+      <DivDescricao>{IAModel.descricao}</DivDescricao>
       <DivImagem>
-        <Imagem src='https://picsum.photos/id/237/536/354'></Imagem>
+        <Imagem src={IAModel.link}></Imagem>
       </DivImagem>
     </DivCard>
   );

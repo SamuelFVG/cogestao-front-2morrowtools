@@ -1,5 +1,3 @@
-import { useState } from "react";
-import { Modal, Button } from "antd";
 import { BotaoFormulario, DivBotao, DivGeral, DivSubTitulo, DivTitulo } from "./styles";
 
 export default function ModalDelete() {
