@@ -2,6 +2,7 @@ import { BotaoFormulario, DivBotao, DivGeral, DivSubTitulo, DivTitulo } from "./
 import { useQueryClient } from "@tanstack/react-query";
 import { buildDeleteFerramentaErrorMessage } from "./utilis";
 import { useDeleteFerramenta } from "../../hooks/query/ferramentas";
+import { useState } from "react";
 
 export default function ModalDelete({ _id }) {
   const queryClient = useQueryClient();
@@ -24,7 +25,13 @@ export default function ModalDelete({ _id }) {
         <DivTitulo>Excluir Ferramenta</DivTitulo>
         <DivSubTitulo>Tem certeza que você deseja excluir essa ferramenta?</DivSubTitulo>
         <DivBotao>
-          <BotaoFormulario type='button' onClick={() => deleteFerramenta(_id)}>
+          <BotaoFormulario
+            type='button'
+            disabled={isPending}
+            onClick={() => {
+              deleteFerramenta(_id);
+            }}
+          >
             EXCLUIR
           </BotaoFormulario>
         </DivBotao>

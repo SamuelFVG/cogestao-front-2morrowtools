@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   BotaoFormulario,
   DivBotao,
@@ -12,24 +11,18 @@ import {
 } from "./styles";
 import { useUpdateFerramenta } from "../../hooks/query/ferramentas";
 import { useQueryClient } from "@tanstack/react-query";
-import { updateFerramentaValidationSchema } from "./utilis";
+import { buildUpdateFerramentaErrorMessage, updateFerramentaValidationSchema } from "./utilis";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { updateFerramenta } from "../../services/endpoint";
+import { useState } from "react";
 
 export default function ModalEdit({ IAModel }) {
-  const [nome, setNome] = useState("");
-  const [link, setLink] = useState("");
-  const [descricao, setDescricao] = useState("");
-
   const queryClient = useQueryClient();
+  const [isPending, setIsPending] = useState(false);
 
   const { mutate: updateFerramenta } = useUpdateFerramenta({
-    onSucess: () => {
+    onSuccess: () => {
       Promise.all([
-        queryClient.invalidateQueries({
-          queryKey: ["ferramentas"],
-        }),
         queryClient.invalidateQueries({
           queryKey: ["ferramentas"],
         }),
@@ -37,7 +30,8 @@ export default function ModalEdit({ IAModel }) {
     },
 
     onError: (err) => {
-      console.log(err);
+      const errorMessage = buildUpdateFerramentaErrorMessage(err);
+      console.log(errorMessage);
     },
   });
 

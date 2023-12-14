@@ -1,4 +1,9 @@
-import { getFerramentas, createFerramenta, deleteFerramenta } from "../../services/endpoint";
+import {
+  getFerramentas,
+  createFerramenta,
+  deleteFerramenta,
+  updateFerramenta,
+} from "../../services/endpoint";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 export function useGetFerramentas({
@@ -26,12 +31,12 @@ export function useCreateFerramenta({
 }
 
 export function useUpdateFerramenta({
-  onSucess = () => {},
+  onSuccess = () => {},
   onError = (err) => console.log(err),
 } = {}) {
   return useMutation({
-    mutationFn: useUpdateFerramenta,
-    onSucess,
+    mutationFn: updateFerramenta,
+    onSuccess,
     onError,
   });
 }

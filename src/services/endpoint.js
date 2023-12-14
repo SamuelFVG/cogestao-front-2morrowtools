@@ -18,7 +18,7 @@ export const updateFerramenta = async ({ _id, newFerramentaData }) => {
   return data;
 };
 
-export const deleteFerramenta = async ({ _id }) => {
+export const deleteFerramenta = async (_id) => {
   const { data } = await api.delete(`/ferramentas/${_id}`);
 
   return data;

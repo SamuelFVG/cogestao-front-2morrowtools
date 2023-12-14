@@ -23,15 +23,6 @@ import { useForm } from "react-hook-form";
 import { createFerramentaValidationSchema, buildCreateFerramentaErrorMessage } from "./utilis";
 
 export default function Favorites() {
-  const modalCloseButton = <CloseOutlined style={{ color: "white" }} />;
-  const [modalDelete, setModalDelete] = useState(false);
-  const openModalDelete = () => setModalDelete(true);
-  const closeModalDelete = () => setModalDelete(false);
-  const [nome, setNome] = useState("");
-  const [link, setLink] = useState("");
-  const [descricao, setDescricao] = useState("");
-  const [ferramentas, setFerramentas] = useState([]);
-
   //ref ModalCreateCategory
 
   const queryClient = useQueryClient();
@@ -62,7 +53,7 @@ export default function Favorites() {
     createFerramenta(data);
   };
 
-  const { data: ferramentas2 } = useGetFerramentas({
+  const { data: ferramentas } = useGetFerramentas({
     onError: (err) => {
       console.log(err);
     },
@@ -112,9 +103,9 @@ export default function Favorites() {
       </DivFormulario>
 
       <DivFerramentasCriadas>FERRAMENTAS CRIADAS</DivFerramentasCriadas>
-      {ferramentas2?.map((IAModel) => (
-        <DivDoCard>
-          <Card IAModel={IAModel} />
+      {ferramentas?.map((IAModel) => (
+        <DivDoCard key={IAModel?._id}>
+          <Card key={IAModel} IAModel={IAModel} />
         </DivDoCard>
       ))}
     </Container>
