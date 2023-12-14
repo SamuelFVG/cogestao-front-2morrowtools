@@ -56,12 +56,13 @@ export const InputFormulario = styled.input`
   padding-left: 1%;
   background-color: transparent;
   border-radius: 6px;
-  border: 2px solid #fff;
+  border: 2px solid #fff !important;
   color: #b4b4b4;
   font-size: 22px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  border: ${({ error }) => (error ? "0.2rem solid red" : "none")};
 `;
 
 export const DivBotao = styled.div`

@@ -43,7 +43,7 @@ export default function Card({ IAModel }) {
             centered
             destroyOnClose
           >
-            <ModalDelete close={closeModalDelete} />
+            <ModalDelete IAModel={IAModel?._id} close={closeModalDelete} />
           </ModalStyle>
         </DivIconLixo>
 
@@ -60,7 +60,7 @@ export default function Card({ IAModel }) {
             centered
             destroyOnClose
           >
-            <ModalEdit close={closeModalEdit} />
+            <ModalEdit IAModel={IAModel} close={closeModalEdit} />
           </ModalStyle>
         </DivIconPen>
       </DivNomeIcons>

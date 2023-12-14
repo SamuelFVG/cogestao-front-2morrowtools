@@ -8,6 +8,7 @@ export const DivCard = styled.div`
   align-self: center;
   width: 50%;
   flex-direction: column;
+  padding-bottom: 2%;
 `;
 
 export const DivNomeIcons = styled.div`

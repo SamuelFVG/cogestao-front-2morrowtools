@@ -17,9 +17,9 @@ import { ModalDelete } from "../../components";
 import { CloseOutlined } from "@ant-design/icons";
 import api from "../../services/api";
 import { useGetFerramentas, useCreateFerramenta } from "../../hooks/query/ferramentas";
-import { QueryClient } from "@tanstack/react-query";
+import { QueryClient, useQueryClient } from "@tanstack/react-query";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "antd/es/form/Form";
+import { useForm } from "react-hook-form";
 import { createFerramentaValidationSchema, buildCreateFerramentaErrorMessage } from "./utilis";
 
 export default function Favorites() {
@@ -34,9 +34,11 @@ export default function Favorites() {
 
   //ref ModalCreateCategory
 
+  const queryClient = useQueryClient();
+
   const { mutate: createFerramenta } = useCreateFerramenta({
     onSucess: () => {
-      QueryClient.invalidateQueries({
+      queryClient.invalidateQueries({
         queryKey: ["ferramentas"],
       });
     },
@@ -50,6 +52,7 @@ export default function Favorites() {
   const {
     handleSubmit,
     register,
+    control,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(validationSchema),
@@ -58,8 +61,6 @@ export default function Favorites() {
   const onSubmit = (data) => {
     createFerramenta(data);
   };
-
-  const errorMessage = errors?.name?.message;
 
   const { data: ferramentas2 } = useGetFerramentas({
     onError: (err) => {
@@ -71,15 +72,16 @@ export default function Favorites() {
     <Container>
       <DivNovaFerramenta>CRIAR NOVA FERRAMENTA</DivNovaFerramenta>
       <DivFormulario>
-        <Formulario onSubmit={handleSubmit}>
+        <Formulario onSubmit={handleSubmit(onSubmit)}>
           <LabelFormulario>Nome</LabelFormulario>
           <InputFormulario
             type='text'
             required
             placeholder='GPT'
             id='nome'
-            error={!!errorMessage}
+            error={errors?.nome?.message}
             {...register("nome")}
+            control={control}
           ></InputFormulario>
 
           <LabelFormulario>Upload de imagem</LabelFormulario>
@@ -88,8 +90,9 @@ export default function Favorites() {
             required
             placeholder='http//google'
             id='imagem'
-            error={!!errorMessage}
+            error={errors?.link?.message}
             {...register("link")}
+            control={control}
           ></InputFormulario>
 
           <LabelFormulario>Descrição curta</LabelFormulario>
@@ -98,8 +101,9 @@ export default function Favorites() {
             required
             placeholder='Escreva aqui a sua descrição'
             id='descricao'
-            error={!!errorMessage}
+            error={errors?.descricao?.message}
             {...register("descricao")}
+            control={control}
           ></InputFormulario>
           <DivBotao>
             <BotaoFormulario>SALVAR</BotaoFormulario>
