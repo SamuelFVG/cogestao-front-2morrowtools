@@ -88,8 +88,7 @@ export const Button = styled.button`
 
 export const Space = styled.div`
   width: 100%;
-  height: 100px;
-  margin-bottom: 1200px;
+  margin-bottom: 2500px;
 `;
 export const Form = styled.form``;
 export const ModalStyle = styled(Modal)`

@@ -23,6 +23,7 @@ import { CloseOutlined } from "@ant-design/icons";
 export default function Favorites() {
   const modalCloseButton = <CloseOutlined style={{ color: "white" }} />;
   const [deleteIAID, setDeleteIAID] = useState("");
+  const [updateIAID, setUpdateIAID] = useState("");
   const { handleSubmit, register } = useForm();
   const onSubmit = (data) => {
     createTool(data);
@@ -36,7 +37,10 @@ export default function Favorites() {
   const closeModalDelete = () => setModalDelete(false);
 
   const [modalUpdate, setModalUpdate] = useState(false);
-  const openModalUpdate = () => setModalUpdate(true);
+  const openModalUpdate = (_id) => {
+    setUpdateIAID(_id);
+    setModalUpdate(true);
+  };
   const closeModalUpdate = () => setModalUpdate(false);
 
   const { data: tool } = useGetTools({
@@ -91,7 +95,12 @@ export default function Favorites() {
         {tool?.map((tool) => (
           <div key={tool._id}>
             <DivName>
-              {tool.name} <EditIcon onClick={openModalUpdate} />{" "}
+              {tool.name}{" "}
+              <EditIcon
+                onClick={() => {
+                  openModalUpdate(tool?._id);
+                }}
+              />
               <DeleteIcon
                 onClick={() => {
                   openModalDelete(tool?._id);
@@ -99,7 +108,7 @@ export default function Favorites() {
               />
             </DivName>
             <DivDesc>{tool.description}</DivDesc>
-            <DivUrlImage style={{ backgroundImage: `url(${tool.urlImage})` }} />
+            <DivUrlImage src={tool.urlImage} />
           </div>
         ))}
       </Tool>
@@ -116,7 +125,19 @@ export default function Favorites() {
       >
         <ModalDelete idAI={deleteIAID} querofechar={closeModalDelete} />
       </ModalStyle>
-      {/* <ModalUpdate isOpen={openModalUpdate} onClose={closeModalUpdate} /> */}
+      <ModalStyle
+        open={modalUpdate}
+        onCancel={closeModalUpdate}
+        width={500}
+        height={250}
+        padding={0}
+        footer={null}
+        closeIcon={modalCloseButton}
+        centered
+        destroyOnClose
+      >
+        <ModalUpdate idAI={updateIAID} querofechar={closeModalUpdate} />
+      </ModalStyle>
     </Container>
   );
 }

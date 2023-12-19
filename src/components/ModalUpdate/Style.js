@@ -52,6 +52,7 @@ export const ButtonUpdate = styled.button`
   margin-right: auto;
   margin-top: 15px;
 `;
+export const Form = styled.form``;
 
 export const ButtonClose = styled.button`
   position: absolute;
