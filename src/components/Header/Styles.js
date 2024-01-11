@@ -8,6 +8,7 @@ export const Container = styled.div`
   justify-content: space-between;
   position: fixed;
   z-index: 1;
+  top: 0;
   background-color: ${colors.blue.background};
   width: 100%;
   height: 85px;
